@@ -38,13 +38,13 @@ function! Tmux_test(what)
 
         if g:pane_open == 0
             execute '! tmux splitw -h -d'
-            execute "! tmux send-keys -t .2 \"" . a:cmd . "\" C-m"
+            execute "! tmux send-keys -t .right \"" . a:cmd . "\" C-m"
             execute '! tmux last pane' 
             let g:pane_open = 1
 
         else  
             echo 'Closing pane'
-            execute '! tmux kill-pane -t .2'
+            execute '! tmux kill-pane -t .right'
             let g:pane_open = 0
         endif
     else
