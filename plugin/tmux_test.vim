@@ -1,6 +1,6 @@
-map <Leader>e :call RemoteSendCommand('check')<CR><CR>
-map <Leader>r :call RemoteSendCommand('run')<CR><CR>
-map <Leader>t :call RemoteSendCommand('test')<CR><CR>
+map <Leader>e :call Tmux_test('check')<CR><CR>
+map <Leader>r :call Tmux_test('run')<CR><CR>
+map <Leader>t :call Tmux_test('test')<CR><CR>
 
 "bool whether command window open
 let g:pane_open = 0
@@ -15,7 +15,7 @@ let g:ctmux = {'rust': 'cargo check',
             \ 'vim': 'pwd',
             \}
 
-function! RemoteSendCommand(what)
+function! Tmux_test(what)
     if exists('$TMUX')
         let a:cmd = 'clear'
         if a:what ==# 'run'
@@ -40,6 +40,4 @@ function! RemoteSendCommand(what)
     else
         echo 'This needs to be run in tmux'
     endif
-
-    echo a:cmd
 endfunction
