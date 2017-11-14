@@ -27,6 +27,9 @@ function! Tmux_test(what)
     "make sure you have tmux open
     if exists('$TMUX')
         let a:cmd = 'clear'
+        "Save the file
+        write
+        
         if a:what ==# 'run'
             "get the value from dict, default to ls
             let a:cmd = get(g:rtmux, &filetype, 'ls')
